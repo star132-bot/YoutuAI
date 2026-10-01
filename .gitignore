@@ -8,3 +8,4 @@ config/huinuo.config.json
 .DS_Store
 packages/widget/public/models/
 packages/widget/public/vendor/
+exports/

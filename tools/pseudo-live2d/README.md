@@ -69,6 +69,14 @@ python tools/pseudo-live2d/preview_face.py <输出目录>
 | 耳根转动时露出色块 | 耳根被头发挡住的部分只用耳朵本身的纹理延伸（inpaint）补出 |
 | 花饰跟着耳朵乱动 | `keep_on_head` 把花饰区域留在头部 |
 
+## 导出给 Cubism Editor 等软件用的素材包
+
+```bash
+python tools/pseudo-live2d/export_kit.py
+```
+
+生成 `exports/huinuo-live2d-kit/`（及 `.zip`）：分层 `huinuo.psd`、对齐的整幅图层 PNG、36 个 `.motion3.json`、参考图和绑定规范。使用说明见包内 `README.md`（源文件 `tools/pseudo-live2d/KIT_README.md`）。
+
 ## 下一步
 
 1. **手臂**：拆出左右手臂，用图像编辑接口补画手臂后面的裙子，做抬手 / 挥手 / 指向。
