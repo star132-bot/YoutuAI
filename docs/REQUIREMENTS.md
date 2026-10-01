@@ -30,6 +30,13 @@
 | B 鼠标少女 | 双马尾 + 大圆鼠耳，鼠耳连帽外套，手抱「电脑鼠标」抱枕（线缆当尾巴），光标发卡，条纹过膝袜 | `design/concepts/B-cursor-mouse.png` |
 | C 偶像主播 | 鼠耳耳机麦克风，长卷发，偶像打歌服，麦克风魔法棒，皇冠/爱心发卡 | `design/concepts/C-idol-streamer.png` |
 
+**已选：B 鼠标少女**。修改：头顶鼠耳改为帽子，去掉兜帽 / 肩上的鼠耳突起。帽子三选一：
+| 版本 | 帽子 | 文件 |
+|---|---|---|
+| B2-1 | 针织毛线帽 + 白色绒球 + 小老鼠刺绣 | `design/concepts/B2-1-beanie.png` |
+| B2-2 | 侧戴贝雷帽 + 光标徽章 + 小蝴蝶结 | `design/concepts/B2-2-beret.png` |
+| B2-3 | 渔夫帽 + 小老鼠徽章 + 星星 | `design/concepts/B2-3-bucket-hat.png` |
+
 > ⚠️ 商用注意：成稿中避免出现类似米老鼠的「三圆」头像图案（版权风险）。
 
 ### 2.3 Live2D 立绘要求
