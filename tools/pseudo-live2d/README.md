@@ -13,6 +13,9 @@ npm run dev:widget
 打开 <http://localhost:5173/pseudo.html>：右侧有全部动作、表情、说话按钮，以及参数滑块（拖动检查接缝，双击复位）。
 直播用 `pseudo.html?obs=1`（隐藏面板）。
 
+在线版（不用装任何东西）：<https://claude.ai/artifact/9xxbytKjhhBH6k3Q9guwPt>。
+打包单文件版：`node packages/widget/scripts/build-pseudo-standalone.mjs`，页面先引入 PixiJS 6.5.10，再引入生成的 `huinuo-pseudo.js`，用 `HuinuoPseudo.PseudoCharacter.create(canvas, { rigUrl })` 创建。
+
 ## 能做什么
 
 | 能力 | 实现 |
