@@ -37,6 +37,13 @@
 | B2-2 | 侧戴贝雷帽 + 光标徽章 + 小蝴蝶结 | `design/concepts/B2-2-beret.png` |
 | B2-3 | 渔夫帽 + 小老鼠徽章 + 星星 | `design/concepts/B2-3-bucket-hat.png` |
 
+帽子版本被否，改为**戴上外套自带的连帽**：
+| 版本 | 连帽 | 文件 |
+|---|---|---|
+| B3-1 | 素色连帽 + 白色毛绒边 | `design/concepts/B3-1-hood-fur.png` |
+| B3-2 | 连帽 + 两只小鼠耳 | `design/concepts/B3-2-hood-ears.png` |
+| B3-3 | 连帽 + 小鼠耳 + 帽檐小老鼠脸刺绣 | `design/concepts/B3-3-hood-mouse-face.png` |
+
 > ⚠️ 商用注意：成稿中避免出现类似米老鼠的「三圆」头像图案（版权风险）。
 
 ### 2.3 Live2D 立绘要求
