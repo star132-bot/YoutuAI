@@ -8,17 +8,19 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w @huinuo/server & npm run dev -w @huinuo/widget",
+    "dev": "concurrently -k -n server,web -c cyan,magenta \"npm:dev:server\" \"npm:dev:widget\"",
     "dev:server": "npm run dev -w @huinuo/server",
     "dev:widget": "npm run dev -w @huinuo/widget",
     "build": "npm run build -w @huinuo/widget",
     "start": "npm run start -w @huinuo/server",
     "test": "vitest run",
     "typecheck": "tsc -p packages/shared && tsc -p packages/server && tsc -p packages/widget",
-    "export-motions": "tsx packages/widget/scripts/export-motions.ts"
+    "export-motions": "tsx packages/widget/scripts/export-motions.ts",
+    "demo": "node scripts/ensure-model.mjs && concurrently -k -n server,web -c cyan,magenta \"npm:dev:server\" \"npm:dev:widget\""
   },
   "devDependencies": {
     "@types/node": "^22.20.4",
+    "concurrently": "^9.2.4",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",
     "vitest": "^2.1.0"

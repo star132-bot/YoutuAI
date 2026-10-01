@@ -17,17 +17,21 @@
 
 ## 快速开始
 
-需要 Node.js 20+。
+需要 [Node.js](https://nodejs.org/) 20 或以上（Windows / macOS / Linux 都可以）。
 
 ```bash
+git clone -b claude/hello-5taxz6 https://github.com/star132-bot/YoutuAI.git
+cd YoutuAI
 npm install
-npm run fetch-model -w @huinuo/widget   # 下载开发用的 Live2D 示例模型和 Cubism Core（不入库）
-npm run dev:server                       # 后端 http://localhost:8787
-npm run dev:widget                       # 前端 http://localhost:5173
+npm run demo
 ```
+
+`npm run demo` 第一次会自动下载开发用的 Live2D 示例模型，然后同时启动后端和前端。看到 `Local: http://localhost:5173/` 后打开：
 
 - 网站助手演示：<http://localhost:5173/>
 - 直播画面 + 动作调试面板：<http://localhost:5173/live.html>（OBS 中使用 `live.html?obs=1`）
+
+按 `Ctrl + C` 停止。
 
 不配置 AI Key 时自动使用**离线模式**（按关键词回复），可以先体验全部交互。
 
