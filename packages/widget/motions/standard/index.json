@@ -1,0 +1,206 @@
+{
+  "idle_breathe": {
+    "file": "idle_breathe.motion3.json",
+    "duration": 4,
+    "loop": true,
+    "skippedTransform": false
+  },
+  "idle_sway": {
+    "file": "idle_sway.motion3.json",
+    "duration": 4,
+    "loop": true,
+    "skippedTransform": false
+  },
+  "idle_look_around": {
+    "file": "idle_look_around.motion3.json",
+    "duration": 3.2,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "idle_yawn": {
+    "file": "idle_yawn.motion3.json",
+    "duration": 3,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "greet_wave": {
+    "file": "greet_wave.motion3.json",
+    "duration": 2.4,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "greet_hop": {
+    "file": "greet_hop.motion3.json",
+    "duration": 1.4,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "greet_bow": {
+    "file": "greet_bow.motion3.json",
+    "duration": 2.2,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "bye_wave": {
+    "file": "bye_wave.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "talk": {
+    "file": "talk.motion3.json",
+    "duration": 2.4,
+    "loop": true,
+    "skippedTransform": false
+  },
+  "talk_explain": {
+    "file": "talk_explain.motion3.json",
+    "duration": 3,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "think": {
+    "file": "think.motion3.json",
+    "duration": 3,
+    "loop": true,
+    "skippedTransform": false
+  },
+  "think_tilt": {
+    "file": "think_tilt.motion3.json",
+    "duration": 2,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "happy_bounce": {
+    "file": "happy_bounce.motion3.json",
+    "duration": 1.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "happy_spin": {
+    "file": "happy_spin.motion3.json",
+    "duration": 1.4,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "happy_cheer": {
+    "file": "happy_cheer.motion3.json",
+    "duration": 1.8,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "shy_hide": {
+    "file": "shy_hide.motion3.json",
+    "duration": 2.4,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "shy_fidget": {
+    "file": "shy_fidget.motion3.json",
+    "duration": 2.4,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "sad_droop": {
+    "file": "sad_droop.motion3.json",
+    "duration": 2.8,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "angry_puff": {
+    "file": "angry_puff.motion3.json",
+    "duration": 2.2,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "angry_stomp": {
+    "file": "angry_stomp.motion3.json",
+    "duration": 1.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "surprised_jump": {
+    "file": "surprised_jump.motion3.json",
+    "duration": 1.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "point_left": {
+    "file": "point_left.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "point_right": {
+    "file": "point_right.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "point_up": {
+    "file": "point_up.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "point_down": {
+    "file": "point_down.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "nod": {
+    "file": "nod.motion3.json",
+    "duration": 1.2,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "shake_head": {
+    "file": "shake_head.motion3.json",
+    "duration": 1.3,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "sleep_doze": {
+    "file": "sleep_doze.motion3.json",
+    "duration": 4,
+    "loop": true,
+    "skippedTransform": false
+  },
+  "wake_up": {
+    "file": "wake_up.motion3.json",
+    "duration": 1.6,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "poke_head": {
+    "file": "poke_head.motion3.json",
+    "duration": 1.8,
+    "loop": false,
+    "skippedTransform": false
+  },
+  "poke_body": {
+    "file": "poke_body.motion3.json",
+    "duration": 1.4,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "drag_dangle": {
+    "file": "drag_dangle.motion3.json",
+    "duration": 1.2,
+    "loop": true,
+    "skippedTransform": true
+  },
+  "mischief_peek": {
+    "file": "mischief_peek.motion3.json",
+    "duration": 2.6,
+    "loop": false,
+    "skippedTransform": true
+  },
+  "mischief_wink": {
+    "file": "mischief_wink.motion3.json",
+    "duration": 1.6,
+    "loop": false,
+    "skippedTransform": false
+  }
+}

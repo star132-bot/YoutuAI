@@ -1,0 +1,143 @@
+{
+  "Version": 3,
+  "Meta": {
+    "Duration": 4,
+    "Fps": 30,
+    "Loop": true,
+    "AreBeziersRestricted": true,
+    "FadeInTime": 0.2,
+    "FadeOutTime": 0.3,
+    "CurveCount": 6,
+    "TotalSegmentCount": 11,
+    "TotalPointCount": 39,
+    "UserDataCount": 0,
+    "TotalUserDataSize": 0
+  },
+  "Curves": [
+    {
+      "Target": "Parameter",
+      "Id": "ParamEyeLOpen",
+      "Segments": [
+        0,
+        0,
+        1,
+        1.333,
+        0,
+        2.667,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamEyeROpen",
+      "Segments": [
+        0,
+        0,
+        1,
+        1.333,
+        0,
+        2.667,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamAngleY",
+      "Segments": [
+        0,
+        -12,
+        1,
+        0.533,
+        -12,
+        1.067,
+        -12,
+        1.6,
+        -22,
+        1,
+        1.7,
+        -10,
+        1.8,
+        -10,
+        1.9,
+        -10,
+        1,
+        2.6,
+        -10,
+        3.3,
+        -12,
+        4,
+        -12
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamAngleZ",
+      "Segments": [
+        0,
+        8,
+        1,
+        0.667,
+        8,
+        1.333,
+        12,
+        2,
+        12,
+        1,
+        2.667,
+        12,
+        3.333,
+        8,
+        4,
+        8
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamMouthOpenY",
+      "Segments": [
+        0,
+        0.1,
+        1,
+        0.667,
+        0.1,
+        1.333,
+        0.25,
+        2,
+        0.25,
+        1,
+        2.667,
+        0.25,
+        3.333,
+        0.1,
+        4,
+        0.1
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "ParamBodyAngleY",
+      "Segments": [
+        0,
+        -3,
+        1,
+        0.667,
+        -3,
+        1.333,
+        -5,
+        2,
+        -5,
+        1,
+        2.667,
+        -5,
+        3.333,
+        -3,
+        4,
+        -3
+      ]
+    }
+  ]
+}

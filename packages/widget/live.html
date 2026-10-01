@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐭</text></svg>" />
+  <title>灰糯 · 直播画面</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    body.preview { background: repeating-conic-gradient(#e8ecee 0 25%, #f6f8f9 0 50%) 0 0 / 24px 24px; }
+    huinuo-assistant { position: absolute; inset: 0; }
+    .panel {
+      position: absolute; right: 12px; top: 12px; bottom: 12px; width: 320px; overflow-y: auto;
+      background: rgba(255,255,255,.95); border: 1px solid #DCE3E6; border-radius: 12px; padding: 12px; font-size: 13px; color: #22303C;
+    }
+    .panel h3 { margin: 12px 0 6px; font-size: 13px; color: #4E6170; }
+    .panel h3:first-child { margin-top: 0; }
+    .grid { display: flex; flex-wrap: wrap; gap: 4px; }
+    .grid button, .panel form button { border: 1px solid #3E9EA3; background: #fff; color: #2B3A4A; border-radius: 6px; padding: 3px 7px; font-size: 12px; cursor: pointer; }
+    .grid button:hover { background: #3E9EA3; color: #fff; }
+    .panel form { display: flex; gap: 4px; margin-top: 4px; }
+    .panel input { flex: 1; min-width: 0; padding: 4px 6px; border: 1px solid #DCE3E6; border-radius: 6px; }
+    .panel p { color: #6B7C88; line-height: 1.6; margin: 4px 0; }
+    #log { font-family: ui-monospace, monospace; font-size: 11px; white-space: pre-wrap; color: #4E6170; }
+  </style>
+</head>
+<body>
+  <huinuo-assistant mode="live" api="/api" profile="haru" model="/models/haru/haru_greeter_t03.model3.json" core-url="/vendor/live2dcubismcore.min.js"></huinuo-assistant>
+
+  <aside class="panel" id="panel" hidden>
+    <h3>使用方法</h3>
+    <p>OBS → 来源 → 浏览器，填入本页地址并加上 <b>?obs=1</b>（隐藏此面板、背景透明）。</p>
+    <h3>动作（<span id="mcount"></span> 个）</h3>
+    <div class="grid" id="motions"></div>
+    <h3>表情（<span id="ecount"></span> 种）</h3>
+    <div class="grid" id="emotions"></div>
+    <h3>模拟 YouTube 事件（经过 jev 判断）</h3>
+    <form id="chat-form"><input name="author" value="观众A" style="max-width:70px" /><input name="text" placeholder="弹幕，如：灰糯你好呀" /><button>弹幕</button></form>
+    <div class="grid" style="margin-top:6px">
+      <button id="sc">Super Chat ¥30</button>
+      <button id="member">新会员</button>
+      <button id="dance">弹幕：跳个舞</button>
+    </div>
+    <h3>判断日志</h3>
+    <div id="log"></div>
+  </aside>
+
+  <script type="module">
+    import '/src/index.ts';
+    import { MOTIONS, EMOTIONS } from '@huinuo/shared';
+
+    const obs = new URLSearchParams(location.search).has('obs');
+    const el = document.querySelector('huinuo-assistant');
+    const panel = document.getElementById('panel');
+    if (!obs) {
+      document.body.classList.add('preview');
+      panel.hidden = false;
+      el.style.right = '344px';
+    }
+    const log = (s) => (document.getElementById('log').textContent = `${new Date().toLocaleTimeString()} ${s}\n` + document.getElementById('log').textContent);
+
+    document.getElementById('mcount').textContent = MOTIONS.length;
+    document.getElementById('ecount').textContent = EMOTIONS.length;
+    for (const m of MOTIONS) {
+      const b = Object.assign(document.createElement('button'), { textContent: m });
+      b.onclick = () => el.play(m);
+      document.getElementById('motions').append(b);
+    }
+    for (const e of EMOTIONS) {
+      const b = Object.assign(document.createElement('button'), { textContent: e });
+      b.onclick = () => el.say(`现在是「${e}」表情～`, 'talk', { emotion: e });
+      document.getElementById('emotions').append(b);
+    }
+
+    const send = async (event) => log(JSON.stringify(await el.emit(event)));
+    document.getElementById('chat-form').onsubmit = (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      send({ source: 'youtube', type: 'chat', author: f.get('author'), text: f.get('text') });
+      e.target.text.value = '';
+    };
+    document.getElementById('sc').onclick = () => send({ source: 'youtube', type: 'superchat', author: '观众B', text: '灰糯加油！', amount: '¥30' });
+    document.getElementById('member').onclick = () => send({ source: 'youtube', type: 'new_member', author: '观众C' });
+    document.getElementById('dance').onclick = () => send({ source: 'youtube', type: 'chat', author: '观众D', text: '灰糯跳个舞' });
+
+    el.addEventListener('huinuo-ready', () => el.say('吱～直播开始啦！', 'greet_wave'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "providers": [
+    {
+      "id": "primary",
+      "type": "openai",
+      "baseUrl": "https://api.deepseek.com/v1",
+      "model": "deepseek-chat",
+      "apiKeyEnv": "PRIMARY_AI_KEY",
+      "timeoutMs": 20000,
+      "jsonMode": true
+    },
+    {
+      "id": "backup",
+      "type": "openai",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "model": "qwen-plus",
+      "apiKeyEnv": "BACKUP_AI_KEY",
+      "timeoutMs": 20000
+    },
+    { "id": "offline", "type": "mock" }
+  ],
+  "knowledge": [
+    {
+      "title": "上传视频",
+      "keywords": ["上传", "发视频", "upload"],
+      "content": "点击页面右上角的「上传」按钮（选择器 #upload-btn），选择视频文件后，在标题输入框（#title-input）填写标题，最后点「发布」（#publish-btn）。"
+    },
+    {
+      "title": "修改头像",
+      "keywords": ["头像", "avatar"],
+      "content": "点击左上角的头像（#avatar-btn），在弹出的菜单里选择「更换头像」。"
+    }
+  ],
+  "tutorials": [
+    {
+      "id": "upload-video",
+      "title": "上传第一个视频",
+      "keywords": ["怎么上传", "上传视频", "发视频"],
+      "steps": [
+        { "target": "#upload-btn", "say": "第一步，点这个「上传」按钮～", "motion": "point_right", "waitFor": "click" },
+        { "target": "#title-input", "say": "给视频起个好听的名字吧！", "motion": "talk_explain", "waitFor": "input" },
+        { "target": "#publish-btn", "say": "最后点「发布」，大功告成！", "motion": "point_down", "waitFor": "click" }
+      ]
+    }
+  ],
+  "jev": {
+    "idleSeconds": 30,
+    "youtubeReplyIntervalMs": 8000,
+    "blockedWords": []
+  },
+  "allowedOrigins": ["*"]
+}

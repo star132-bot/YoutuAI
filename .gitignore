@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+config/huinuo.config.json
+*.log
+.DS_Store
+packages/widget/public/models/
+packages/widget/public/vendor/

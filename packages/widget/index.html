@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐭</text></svg>" />
+  <title>灰糯 · 网站助手演示</title>
+  <style>
+    :root { --bg: #F3F5F6; --card: #fff; --text: #22303C; --muted: #6B7C88; --line: #DCE3E6; --teal: #3E9EA3; --slate: #4E6170; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #161C21; --card: #222B32; --text: #E6ECEF; --muted: #9AAAB5; --line: #34424D; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); }
+    header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--card); border-bottom: 1px solid var(--line); }
+    header .logo { font-weight: 700; color: var(--slate); margin-right: auto; }
+    button, input { font: inherit; }
+    .btn { border: 0; border-radius: 8px; padding: 8px 14px; background: var(--teal); color: #fff; cursor: pointer; }
+    .avatar { width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--slate); color: #fff; cursor: pointer; }
+    main { max-width: 760px; margin: 24px auto; padding: 0 16px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .card h2 { margin: 0 0 12px; font-size: 18px; }
+    label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 14px; }
+    input[type=text] { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
+    .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .hint { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    code { background: var(--bg); padding: 1px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="avatar-btn" class="avatar" aria-label="个人中心">我</button>
+    <span class="logo">YoutuAI 视频站（演示）</span>
+    <button id="upload-btn" class="btn">上传</button>
+  </header>
+  <main>
+    <section class="card">
+      <h2>发布新视频</h2>
+      <label for="title-input">视频标题</label>
+      <input id="title-input" type="text" placeholder="给视频起个名字" />
+      <div class="row"><button id="publish-btn" class="btn">发布</button></div>
+    </section>
+    <section class="card hint">
+      <h2>试试和灰糯互动</h2>
+      <ul>
+        <li>移动鼠标：灰糯的视线会跟着你</li>
+        <li>点她的头 / 身体：不同反应；连续戳 5 下会生气</li>
+        <li>按住拖动：可以把她拎到别的位置</li>
+        <li>点 💬 和她聊天，试试问「怎么上传视频？」→ 自动开始教程</li>
+        <li>30 秒不操作：她会探头问你要不要帮忙；3 分钟不操作：她会睡着</li>
+        <li><button class="btn" id="boom">制造一个页面错误</button></li>
+      </ul>
+      <p>没配置 AI Key 时使用离线模式（<code>mock</code>），配好后见 README。</p>
+    </section>
+  </main>
+
+  <huinuo-assistant api="/api" profile="haru" model="/models/haru/haru_greeter_t03.model3.json" core-url="/vendor/live2dcubismcore.min.js"></huinuo-assistant>
+  <script type="module" src="/src/index.ts"></script>
+  <script>
+    document.getElementById('boom').addEventListener('click', () => setTimeout(() => { throw new Error('演示用的错误'); }));
+  </script>
+</body>
+</html>
