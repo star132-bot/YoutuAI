@@ -44,6 +44,13 @@
 | B3-2 | 连帽 + 两只小鼠耳 | `design/concepts/B3-2-hood-ears.png` |
 | B3-3 | 连帽 + 小鼠耳 + 帽檐小老鼠脸刺绣 | `design/concepts/B3-3-hood-mouse-face.png` |
 
+连帽也不要了。**配色改为灰蓝 / 石板色 + 青绿点缀 + 白色小花**（参考图仅借鉴配色氛围，不复刻）：
+| 版本 | 说明 | 文件 |
+|---|---|---|
+| D1 | B 版换色：灰蓝双马尾 + 白→青绿渐变，自带毛绒鼠耳，侧边白花 | `design/concepts/D1-slate-hoodie.png` |
+| D2 | 新设计：微卷长发低双马尾，露肩开衫 + 青绿百褶裙，光标宝石发卡（含三视图 + 表情 + 色板） | `design/concepts/D2-slate-cardigan-sheet.png` |
+| D3 | 新设计：双色短卷发，水手领连衣裙，光标水晶魔法棒，尾巴挂铃铛（含三视图 + 表情） | `design/concepts/D3-slate-sailor-sheet.png` |
+
 > ⚠️ 商用注意：成稿中避免出现类似米老鼠的「三圆」头像图案（版权风险）。
 
 ### 2.3 Live2D 立绘要求
