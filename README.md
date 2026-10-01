@@ -5,6 +5,7 @@
 - 需求与设计：[`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md)
 - 角色定稿：[`design/final/`](design/final/)
 - 给建模师的 Live2D 规范：[`docs/LIVE2D-RIGGING.md`](docs/LIVE2D-RIGGING.md)
+- **伪 Live2D（一张立绘做出能动的灰糯）**：[`tools/pseudo-live2d/README.md`](tools/pseudo-live2d/README.md)，预览 <http://localhost:5173/pseudo.html>
 
 ## 组成
 

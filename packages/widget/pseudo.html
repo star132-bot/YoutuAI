@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐭</text></svg>" />
+  <title>灰糯 · 伪 Live2D 预览</title>
+  <style>
+    :root { --bg: #EEF2F3; --panel: #fff; --text: #22303C; --muted: #6B7C88; --line: #DCE3E6; --teal: #3E9EA3; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #161C21; --panel: #222B32; --text: #E6ECEF; --muted: #9AAAB5; --line: #34424D; } }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    body { display: grid; grid-template-columns: 1fr 340px; }
+    body.obs { grid-template-columns: 1fr; background: transparent; }
+    body.obs aside { display: none; }
+    #stage { position: relative; min-height: 100vh; }
+    canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    aside { background: var(--panel); border-left: 1px solid var(--line); padding: 14px; overflow-y: auto; max-height: 100vh; font-size: 13px; }
+    h3 { margin: 14px 0 6px; font-size: 13px; color: var(--muted); }
+    h3:first-child { margin-top: 0; }
+    .grid { display: flex; flex-wrap: wrap; gap: 4px; }
+    .grid button { border: 1px solid var(--teal); background: transparent; color: var(--text); border-radius: 6px; padding: 3px 7px; font: inherit; font-size: 12px; cursor: pointer; }
+    .grid button:hover, .grid button.on { background: var(--teal); color: #fff; }
+    .grid button.custom { border-style: dashed; }
+    label.slider { display: grid; grid-template-columns: 82px 1fr 38px; align-items: center; gap: 6px; margin: 3px 0; }
+    label.slider span:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+    p { color: var(--muted); line-height: 1.6; margin: 4px 0; }
+    code { font-size: 12px; }
+    @media (max-width: 760px) { body { grid-template-columns: 1fr; } #stage { min-height: 60vh; } aside { max-height: none; border-left: 0; border-top: 1px solid var(--line); } }
+  </style>
+</head>
+<body>
+  <div id="stage"><canvas aria-label="灰糯（伪 Live2D）"></canvas></div>
+  <aside>
+    <h3>动作 <span id="count"></span></h3>
+    <div class="grid" id="motions"></div>
+    <p>虚线框 = 从 <code>public/huinuo-pseudo/motions/</code> 里的 .motion3.json 文件加载的动作。</p>
+    <h3>表情</h3>
+    <div class="grid" id="emotions"></div>
+    <h3>说话</h3>
+    <div class="grid"><button id="talk">说话 3 秒</button></div>
+    <h3>参数（拖动检查接缝，双击复位）</h3>
+    <div id="sliders"></div>
+    <p>直播用：本页地址加 <code>?obs=1</code> 隐藏面板、背景透明。</p>
+  </aside>
+  <script type="module">
+    import { PseudoCharacter } from '/src/pseudo/pseudo-character.ts';
+    import { MOTION_LIBRARY } from '/src/motion/library.ts';
+    import { EMOTIONS } from '@huinuo/shared';
+
+    if (new URLSearchParams(location.search).has('obs')) document.body.classList.add('obs');
+    const canvas = document.querySelector('canvas');
+    const c = await PseudoCharacter.create(canvas, { rigUrl: '/huinuo-pseudo/rig.json', motionsIndexUrl: '/huinuo-pseudo/motions/index.json' });
+    window.huinuo = c;
+    addEventListener('resize', () => c.layout());
+    addEventListener('pointermove', (e) => c.lookAt(e.clientX, e.clientY));
+
+    const builtIn = new Set(Object.keys(MOTION_LIBRARY));
+    document.getElementById('count').textContent = `（${c.motionNames.length}）`;
+    for (const m of c.motionNames) {
+      const b = Object.assign(document.createElement('button'), { textContent: m, className: builtIn.has(m) ? '' : 'custom' });
+      b.onclick = () => { c.stopAction(); setTimeout(() => c.play(m), 50); };
+      document.getElementById('motions').append(b);
+    }
+    for (const e of EMOTIONS) {
+      const b = Object.assign(document.createElement('button'), { textContent: e });
+      b.onclick = () => { document.querySelectorAll('#emotions button').forEach((x) => x.classList.remove('on')); b.classList.add('on'); c.setEmotion(e); };
+      document.getElementById('emotions').append(b);
+    }
+    document.getElementById('talk').onclick = () => { c.setSpeaking(true); setTimeout(() => c.setSpeaking(false), 3000); };
+
+    const sliders = [
+      ['angleX', -30, 30, 0], ['angleY', -30, 30, 0], ['angleZ', -30, 30, 0],
+      ['bodyX', -10, 10, 0], ['bodyZ', -10, 10, 0],
+      ['eyeLOpen', 0, 1, 1], ['eyeROpen', 0, 1, 1], ['mouthOpen', 0, 1, 0], ['cheek', 0, 1, 0],
+    ];
+    for (const [p, min, max, def] of sliders) {
+      const l = document.createElement('label'); l.className = 'slider';
+      l.innerHTML = `<span>${p}</span><input type="range" min="${min}" max="${max}" step="${(max - min) / 100}" value="${def}"><span>—</span>`;
+      const input = l.querySelector('input'); const out = l.lastElementChild;
+      input.oninput = () => { c.setParam(p, +input.value); out.textContent = (+input.value).toFixed(2); };
+      input.ondblclick = () => { input.value = def; c.setParam(p, null); out.textContent = '—'; };
+      document.getElementById('sliders').append(l);
+    }
+  </script>
+</body>
+</html>

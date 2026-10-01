@@ -1,0 +1,133 @@
+{
+  "source": "live2d-base-front.png",
+  "canvas": {
+    "w": 1024,
+    "h": 1536
+  },
+  "order": [
+    "tail",
+    "ear_l",
+    "ear_r",
+    "body",
+    "head"
+  ],
+  "parts": {
+    "ear_l": {
+      "file": "parts/ear_l.png",
+      "x": 391,
+      "y": 28,
+      "w": 92,
+      "h": 115,
+      "pivot": [
+        452,
+        130
+      ]
+    },
+    "ear_r": {
+      "file": "parts/ear_r.png",
+      "x": 548,
+      "y": 25,
+      "w": 98,
+      "h": 115,
+      "pivot": [
+        578,
+        130
+      ]
+    },
+    "tail": {
+      "file": "parts/tail.png",
+      "x": 618,
+      "y": 756,
+      "w": 122,
+      "h": 269,
+      "pivot": [
+        640,
+        778
+      ]
+    },
+    "head": {
+      "file": "parts/head.png",
+      "x": 373,
+      "y": 42,
+      "w": 296,
+      "h": 267,
+      "pivot": [
+        506,
+        290
+      ]
+    },
+    "body": {
+      "file": "parts/body.png",
+      "x": 225,
+      "y": 246,
+      "w": 571,
+      "h": 1227
+    }
+  },
+  "face": {
+    "regions": {
+      "eye_l": [
+        442,
+        192,
+        507,
+        246
+      ],
+      "eye_r": [
+        517,
+        192,
+        584,
+        246
+      ],
+      "mouth": [
+        484,
+        248,
+        536,
+        282
+      ]
+    },
+    "sprites": {
+      "eye_l_eyes_closed": {
+        "file": "parts/eye_l_eyes_closed.png",
+        "x": 442,
+        "y": 192,
+        "w": 65,
+        "h": 54
+      },
+      "eye_r_eyes_closed": {
+        "file": "parts/eye_r_eyes_closed.png",
+        "x": 517,
+        "y": 192,
+        "w": 67,
+        "h": 54
+      },
+      "eye_l_eyes_half": {
+        "file": "parts/eye_l_eyes_half.png",
+        "x": 442,
+        "y": 192,
+        "w": 65,
+        "h": 54
+      },
+      "eye_r_eyes_half": {
+        "file": "parts/eye_r_eyes_half.png",
+        "x": 517,
+        "y": 192,
+        "w": 67,
+        "h": 54
+      },
+      "mouth_mouth_open": {
+        "file": "parts/mouth_mouth_open.png",
+        "x": 484,
+        "y": 248,
+        "w": 52,
+        "h": 34
+      },
+      "mouth_mouth_wide": {
+        "file": "parts/mouth_mouth_wide.png",
+        "x": 484,
+        "y": 248,
+        "w": 52,
+        "h": 34
+      }
+    }
+  }
+}
